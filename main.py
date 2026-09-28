@@ -1,13 +1,12 @@
+"""开发入口：生产/测试请使用 app.main:app 或 create_app()。"""
+from __future__ import annotations
+
 import uvicorn
-from fastapi import FastAPI
 
-app = FastAPI()
+from app.main import app
 
-
-@app.get("/")
-def read_root():
-    return {"Hello": "World"}
+__all__ = ["app"]
 
 
 if __name__ == "__main__":
-    uvicorn.run(app, host="127.0.0.1", port=0)
+    uvicorn.run("app.main:app", host="127.0.0.1", port=8000)
